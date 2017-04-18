@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RegionChildren:regionchildren
+ xsi:schemaLocation="http://www.zillow.com/static/xsd/RegionChildren.xsd http://www.zillowstatic.com/vstatic/7d664a7/static/xsd/RegionChildren.xsd"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:RegionChildren="http://www.zillow.com/static/xsd/RegionChildren.xsd">
+ <request>
+  <state>ca</state>
+  <city>sanfrancisco</city>
+  <childtype>neighborhood</childtype>
+ </request>
+ <message>
+  <text>Error: invalid or missing ZWSID parameter</text>
+  <code>2</code>
+ </message>
+</RegionChildren:regionchildren><!-- H:002 T:0ms S:153 R:Mon Apr 17 20:29:32 
+ PDT 2017 B:5.0.42234-master.8aaefb5~hotfix_pre.d8ebd3d -->

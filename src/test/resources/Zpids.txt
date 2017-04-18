@@ -1,0 +1,23 @@
+http://www.zillow.com/webservice/GetZestimate.htm?zws-id=
+X1-ZWz1995xuoherv_5cfwc
+&zpid=48749425
+http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz1995xuoherv_5cfwc&state=wa&city=seattle&childtype=neighborhood
+
+444 Valley St APT 6,
+San Francisco, CA 94131
+https://www.zillow.com/homes/for_rent/San-Francisco-CA-94131/condo,apartment_duplex_type/2094789777_zpid/97585_rid/featured_sort/37.752071,-122.411342,37.738209,-122.442778_rect/15_zm/
+
+166 Sussex St,
+San Francisco, CA 94131
+https://www.zillow.com/homes/for_rent/San-Francisco-CA-94131/condo,apartment_duplex_type/15184608_zpid/97585_rid/featured_sort/37.746668,-122.418734,37.732804,-122.450169_rect/15_zm/
+
+140 Day St APT 4,
+San Francisco, CA 94131
+https://www.zillow.com/homes/for_rent/San-Francisco-CA-94131/condo,apartment_duplex_type/2095466528_zpid/97585_rid/featured_sort/37.746668,-122.418734,37.732804,-122.450169_rect/15_zm/
+
+
+20 Natick St,
+San Francisco, CA 94131
+https://www.zillow.com/homes/for_rent/San-Francisco-CA-94131/condo,apartment_duplex_type/82786514_zpid/97585_rid/featured_sort/37.746668,-122.418734,37.732804,-122.450169_rect/15_zm/
+
+http://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=<ZWSID>&state=wa&city=seattle&childtype=neighborhood
