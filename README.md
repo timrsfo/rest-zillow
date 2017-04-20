@@ -1,6 +1,6 @@
 # Zillow Developers API
 
-##Synopsis
+## Synopsis
 
 I'm learning how the Zillow Developer's API works. As such I am creating a series of REST test to tickle the interface.
 
