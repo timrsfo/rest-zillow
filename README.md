@@ -34,7 +34,8 @@ I found the following link to be very helpful to get upto speed on creating coll
 
 
 ## Sample Test
-NOTE: You can find the updated version of this in the src/test
+* NOTE: This is a slightly trimmed down version, for the most up to date version see src/test
+* SEE: [GetRegionChildren API](https://www.zillow.com/howto/api/GetRegionChildren.htm)
 
     package com.timr.zillow;
     
