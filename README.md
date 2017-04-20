@@ -86,4 +86,7 @@ NOTE: You can find the updated version of this in the src/test
         }
 
 
+## References
+* [Creating data driven API tests with REST Assured and TestNG](http://www.ontestautomation.com/creating-data-driven-api-tests-with-rest-assured-and-testng/) This is a great site to learn about [Rest Assured](http://rest-assured.io/) and [Bas Dijkstra](http://www.ontestautomation.com/about/) has a lot of extremely useful content.
 
+* [Testing REST services with REST Assured](http://www.ontestautomation.com/testing-rest-services-with-rest-assured/) is a good article for handling RESTful interfaces that return XML not JSON. Zillow's API returns XML.
