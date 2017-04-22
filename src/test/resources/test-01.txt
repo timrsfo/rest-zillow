@@ -1,0 +1,1 @@
+write pseudo code to count the frequency of word occurrence in a text file.
