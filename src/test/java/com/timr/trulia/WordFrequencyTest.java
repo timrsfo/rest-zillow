@@ -100,6 +100,7 @@ public class WordFrequencyTest {
         assertThat(actual, hasEntry("vulputate", 2));
         assertThat(actual, isMapWithSize(TRULIA_MAP_SIZE));
     }
+
     @Test
     public void testTuliaTestFileJ7() {
         Map<String, Integer> actual = null;

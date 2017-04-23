@@ -21,6 +21,7 @@ public class WordFrequency {
 
     /**
      * Count occurrences of words in a line of text
+     * 
      * @param map
      * @param line
      */
@@ -38,11 +39,12 @@ public class WordFrequency {
 
     /**
      * Count occurrences of words in a file
+     * 
      * @param file
      * @return
      * @throws FileNotFoundException
      */
-    public Map<String, Integer> getFileWordCount(File file) throws FileNotFoundException, IOException{
+    public Map<String, Integer> getFileWordCount(File file) throws FileNotFoundException, IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("file: " + file);
@@ -51,7 +53,7 @@ public class WordFrequency {
         Map<String, Integer> map = new HashMap<String, Integer>();
         BufferedReader br = null;
 
-         try {
+        try {
             br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
@@ -64,29 +66,21 @@ public class WordFrequency {
                 }
             } catch (IOException ioe) {
                 // can't do much with this except log it
-               logger.error(ioe.getMessage());
+                logger.error(ioe.getMessage());
             }
         }
 
         return map;
     }
-    
-    
-    /**************************************************************************
-     * 
-     * Using Java 7
-     * 1. Try with resources
-     * 
-     ***************************************************************************
-     */
 
     /**
      * Count occurrences of words in a file
+     * Using Java 7 1. Try with resources 
      * @param file
      * @return
      * @throws FileNotFoundException
      */
-    public Map<String, Integer> getFileWordCountJ7(File file) throws FileNotFoundException, IOException{
+    public Map<String, Integer> getFileWordCountJ7(File file) throws FileNotFoundException, IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("file: " + file);
@@ -94,12 +88,13 @@ public class WordFrequency {
 
         Map<String, Integer> map = new HashMap<String, Integer>();
 
-         try ( BufferedReader br =  new BufferedReader(new FileReader(file))){
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 getLineWordCount(map, line);
             }
-        } 
+        }
         return map;
     }
+
 }

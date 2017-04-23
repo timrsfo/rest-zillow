@@ -18,12 +18,12 @@ I'm learning how the Zillow Developer's API works. As such I am creating a serie
 ## Postman
 This is a great tool for getting the kinks figured out without having to jump into java or some other programming language. 
 
-###Sample Request
+### Sample Request
 NOTE: using variable substitution as described in the reference below, saves a bunch of time.
 `{{base_uri}}/{{base_path}}/GetRegionChildren.htm?zws-id={{ZWSID}}&state=ca&city=sanfrancisco&childtype=neighborhood`
 
 * base_uri: http://www.zillow.com
-* webservice
+* base_path: webservice
 * ZWSID - your personal id as sent to you (see above)
 
 ### Reference
