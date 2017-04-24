@@ -1,13 +1,16 @@
 package com.timr.trulia;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static com.timr.utils.hamcrest.IsMapWithSize.isMapWithSize;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
+import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -86,34 +89,53 @@ public class WordFrequencyTest {
     }
 
     @Test
-    public void testTuliaTestFile() {
+    public void testTuliaTestFile() throws FileNotFoundException, IOException {
         Map<String, Integer> actual = null;
-        try {
             actual = wordFreq.getFileWordCount(new File("src/test/resources/trulia-sample.txt"));
-        } catch (FileNotFoundException e) {
-            Assert.assertTrue(false, e.getMessage());
-        } catch (IOException ioe) {
-            Assert.assertTrue(false, ioe.getMessage());
-        }
         assertThat(actual, hasEntry("dolor", 2));
         assertThat(actual, hasEntry("quam", 3));
         assertThat(actual, hasEntry("vulputate", 2));
         assertThat(actual, isMapWithSize(TRULIA_MAP_SIZE));
+    }
+    
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testNoMapForCount(){
+        wordFreq.getWordsOfCount(null, 1);
+    }
+    
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testBadCount() throws FileNotFoundException, IOException {
+        Map<String, Integer> actual = new HashMap<>();
+        wordFreq.getWordsOfCount(actual, 0);
+    }
+    
+    @DataProvider
+    public Object[][] wordCounts() {
+        return new Object[][] {
+                // word, count, filename
+                { "quam", 3, "trulia-sample.txt"}, 
+                };
     }
 
-    @Test
-    public void testTuliaTestFileJ7() {
+    @Test(dataProvider = "wordCounts")
+    public void testWordsOfCount(String word, int count, String fileName) throws FileNotFoundException, IOException {
+        String testFilePath = "src/test/resources/";
         Map<String, Integer> actual = null;
-        try {
-            actual = wordFreq.getFileWordCountJ7(new File("src/test/resources/trulia-sample.txt"));
-        } catch (FileNotFoundException e) {
-            Assert.assertTrue(false, e.getMessage());
-        } catch (IOException ioe) {
-            Assert.assertTrue(false, ioe.getMessage());
-        }
-        assertThat(actual, hasEntry("dolor", 2));
-        assertThat(actual, hasEntry("quam", 3));
-        assertThat(actual, hasEntry("vulputate", 2));
-        assertThat(actual, isMapWithSize(TRULIA_MAP_SIZE));
+        actual = wordFreq.getFileWordCount(new File(testFilePath + fileName));
+        List<String> words = wordFreq.getWordsOfCount(actual, count);
+        assertThat(words.get(0), equalTo(word));
     }
+    @Test
+    public void testWordsOfCountMultiMatch() throws FileNotFoundException, IOException {
+        String testFilePath = "src/test/resources/";
+        String fileName = "trulia-sample.txt";
+        Map<String, Integer> map = null;
+        map = wordFreq.getFileWordCount(new File(testFilePath + fileName));
+        List<String> actual = wordFreq.getWordsOfCount(map, 2);
+        assertThat(actual, containsInAnyOrder("vulputate", "dolor"));
+
+    }
+
+
+
 }

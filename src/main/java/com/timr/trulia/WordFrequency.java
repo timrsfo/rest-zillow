@@ -5,8 +5,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
@@ -42,51 +46,17 @@ public class WordFrequency {
      * 
      * @param file
      * @return
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException,
+     *             IOException
      */
     public Map<String, Integer> getFileWordCount(File file) throws FileNotFoundException, IOException {
 
+        Map<String, Integer>map = null;
         if (file == null) {
             throw new IllegalArgumentException("file: " + file);
+        } else {
+            map = new HashMap<String, Integer>();
         }
-
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = br.readLine()) != null) {
-                getLineWordCount(map, line);
-            }
-        } finally {
-            try {
-                if (br != null) {
-                    br.close();
-                }
-            } catch (IOException ioe) {
-                // can't do much with this except log it
-                logger.error(ioe.getMessage());
-            }
-        }
-
-        return map;
-    }
-
-    /**
-     * Count occurrences of words in a file
-     * Using Java 7 1. Try with resources 
-     * @param file
-     * @return
-     * @throws FileNotFoundException
-     */
-    public Map<String, Integer> getFileWordCountJ7(File file) throws FileNotFoundException, IOException {
-
-        if (file == null) {
-            throw new IllegalArgumentException("file: " + file);
-        }
-
-        Map<String, Integer> map = new HashMap<String, Integer>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -95,6 +65,34 @@ public class WordFrequency {
             }
         }
         return map;
+    }
+
+    /**
+     * Get a list of all words with count occurrences 
+     * @param count
+     * @return
+     */
+    List<String> getWordsOfCount(Map<String, Integer>map, int count){
+        if(map == null || count <= 0){
+            throw new IllegalArgumentException();
+        }
+        Map<Integer, List<String>> countMap = new HashMap<Integer, List<String>>();
+        List<String> list = null;
+        for(Entry<String, Integer> entry : map.entrySet()) {
+            if(countMap.containsKey(entry.getValue())){
+                list = countMap.get(entry.getValue());
+                list.add(entry.getKey());
+            } else {
+              list = new ArrayList<String>();  
+              list.add(entry.getKey());
+              countMap.put(entry.getValue(), list);
+            }
+        }
+        list = countMap.get(count);
+        if(list == null)
+            return null;
+        Collections.sort(list);
+        return list;
     }
 
 }
